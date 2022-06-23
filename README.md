@@ -31,7 +31,7 @@ A execução do aplicativo é feita através do spring-boot.
 
 No console de uma IDE, insira o comando:
 
-'mvn spring-boot:run'
+`mvn spring-boot:run`
 
 Em seguida, abra o navegador na porta: localhost:8080
 
