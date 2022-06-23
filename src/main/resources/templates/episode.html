@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FireOtaku</title>
+        <link rel="stylesheet" href="css/styles.css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+        <header class="header-details">
+            <div class="content">
+                <nav>
+                    <p class="brand"><a th:href="${(#mvc.url('IC#trending')).build()}">Fire<strong>Otaku</strong></a></p>
+                </nav>
+            </div>
+        </header>
+        <section class="content">
+            <div class="info-episode" th:each="episode : ${episode}">
+                <img th:src="${episode.attributes.thumbnail.original}" alt="episode">
+                <table>
+                <tr>
+                    <th>Title:</th>
+                    <td th:text="${episode.attributes.canonicalTitle}"></td>
+                </tr>
+                <tr>
+                    <th>Synopsis:</th>
+                    <td th:text="${episode.attributes.synopsis}"></td>
+                </tr>
+                <tr>
+                    <th>Season:</th>
+                    <td th:text="${episode.attributes.seasonNumber}"></td>
+                </tr>
+                <tr>
+                    <th>Episode:</th>
+                    <td th:text="${episode.attributes.number}"></td>
+                </tr>
+                <tr>
+                    <th>Air Date:</th>
+                    <td th:text="${episode.attributes.airdate}"></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+        <footer>
+        <div class="main">
+          <div class="content footer-links">
+            <div class="footer-company">
+              <h4>Company</h4>
+              <h6>About</h6>
+              <h6>Contact</h6>
+            </div>
+            <div class="footer-rental">
+              <h4>Info</h4>
+              <h6>Styles based in</h6>
+              <h6>HTML/CSS</h6>
+              <h6>Class</h6>
+            </div>
+            <div class="footer-social">
+              <h4>Stay connected</h4>
+                <div class="social-icons">
+                  <img th:src="@{/images/instagram.png}" alt="Instagram" />
+                  <img th:src="@{/images/facebook.png}" alt="Facebook" />
+                </div>
+            </div>
+            <div class="footer-contact">
+              <h4>Contact US</h4>
+              <h6>+55 XX X XXXX-XXXX</h6>
+              <h6>contact@fireotaku.com</h6>
+              <h6>Street Name, Porto Alegre - RS</h6>
+            </div>
+          </div>
+        </div>
+        <div class="last">FireOtaku - V1.0 - 2022</div>
+      </footer>
+    </body>
+</html>

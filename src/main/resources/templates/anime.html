@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FireOtaku</title>
+        <link rel="stylesheet" href="css/styles.css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+        <header class="header-details">
+            <div class="content">
+                <nav>
+                    <p class="brand"><a th:href="${(#mvc.url('IC#trending')).build()}">Fire<strong>Otaku</strong></a></p>
+                </nav>
+            </div>
+        </header>
+        <section class="content">
+            <div class="info" th:each="anime : ${anime}">
+                <img th:src="${anime.attributes.posterImage.original}" alt="Anime">
+                <table>
+                <tr>
+                    <th>Title:</th>
+                    <td th:text="${anime.attributes.canonicalTitle}"></td>
+                </tr>
+                <tr>
+                    <th>Synopsis:</th>
+                    <td th:text="${anime.attributes.synopsis}"></td>
+                </tr>
+                <tr>
+                    <th>Start Date:</th>
+                    <td th:text="${anime.attributes.startDate}"></td>
+                </tr>
+                <tr>
+                    <th>End Date:</th>
+                    <td th:text="${anime.attributes.endDate}"></td>
+                </tr>
+                <tr>
+                    <th>Status:</th>
+                    <td th:text="${anime.attributes.status}"></td>
+                </tr>
+                <tr>
+                    <th>Episode Count:</th>
+                    <td th:text="${anime.attributes.episodeCount}"></td>
+                </tr>
+                <tr>
+                    <th>Average Rating:</th>
+                    <td th:text="${anime.attributes.averageRating}"></td>
+                </tr>
+                <tr>
+                    <th>Rating Rank:</th>
+                    <td th:text="${anime.attributes.ratingRank}"></td>
+                </tr>
+                <tr>
+                    <th>Popularity Rank:</th>
+                    <td th:text="${anime.attributes.popularityRank}"></td>
+                </tr>
+                <tr>
+                    <th>Favorites Count:</th>
+                    <td th:text="${anime.attributes.favoritesCount}"></td>
+                </tr>
+                <tr>
+                    <th>Age Rating:</th>
+                    <td th:text="${anime.attributes.ageRating}"></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+        <section class="catalog" id="episodes">
+            <div class="content">
+            <div class="title-wrapper-catalog">
+                <h3>Episodes</h3>
+            </div>
+            <center>
+                <div class="card-wrapper">
+                        <div class="card-item" th:each="episode : ${episodes}">
+                            <img th:src="${episode.attributes.thumbnail.original}" alt="AnimeBanner" />
+                            <div class="card-content">
+                                <h3 th:text="${episode.attributes.number}"></h3>
+                                <p th:text="${episode.attributes.synopsis}">
+                                    
+                                </p>
+                                <a th:href="${(#mvc.url('EC#detailsEpisode').arg(0, episode.id)).build()}">Details</a>
+                            </div>
+                        </div>
+                </div>
+            </center>
+            </div>
+            <center>
+                <div class="page-wrapper">
+                    <a href="" class="page-button">First</a>
+                    <a href="" class="page-button">Prev</a>
+                    <a href="" class="page-button">Next</a>
+                </div>
+            </center>
+        </section>
+    </body>
+    <footer>
+        <div class="main">
+        <div class="content footer-links">
+            <div class="footer-company">
+                <h4>Company</h4>
+                <h6>About</h6>
+                <h6>Contact</h6>
+            </div>
+            <div class="footer-rental">
+                <h4>Info</h4>
+                <h6>Styles based in</h6>
+                <h6>HTML/CSS</h6>
+                <h6>Class</h6>
+            </div>
+            <div class="footer-social">
+            <h4>Stay connected</h4>
+                <div class="social-icons">
+                    <img th:src="@{/images/instagram.png}" alt="Instagram" />
+                    <img th:src="@{/images/facebook.png}" alt="Facebook" />
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact US</h4>
+                <h6>+55 XX X XXXX-XXXX</h6>
+                <h6>contact@fireotaku.com</h6>
+                <h6>Street Name, Porto Alegre - RS</h6>
+            </div>
+        </div>
+        </div>
+        <div class="last">FireOtaku - V1.0 - 2022</div>
+    </footer>
+    </body>
+</html>

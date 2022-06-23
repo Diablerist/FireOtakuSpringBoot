@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FireOtaku</title>
+        <link rel="stylesheet" href="css/styles.css"
+                th:href="@{/css/styles.css}"/>
+    </head>
+
+    <body>
+        <header class="header-index">
+            <div class="content">
+                <nav>
+                    <p class="brand"><a th:href="${(#mvc.url('IC#trending')).build()}">Fire<strong>Otaku</strong></a></p>
+                    <ul>
+                    <li><a href="#anime">Anime</a></li>
+                    <li><a href="#manga">Manga</a></li>
+                    </ul>
+                </nav>
+                <div class="header-block" th:each="topanime : ${topanime}">
+                    <div class="text">
+                        <h2 th:text="${topanime.attributes.canonicalTitle}"></h2>
+                        <p th:text="${topanime.attributes.synopsis}"></p>
+                    </div>
+                    <img th:src="${topanime.attributes.posterImage.original}" alt="Anime" />
+                </div>
+            </div>
+        </header>
+
+        <section class="catalog" id="anime">
+            <div class="content">
+            <div class="filter-card">
+                <form action="search.php" method="get">
+                <input
+                    type="text"
+                    name="text"
+                    class="search-input"
+                    placeholder="Search for an anime, manga, genre, etc."
+                />
+                <br/>
+                <select name="category" id="category" class="category-select">
+                    <option value="">Categories</option>
+                    <option value=""></option>
+                </select>
+
+                <select name="year" id="year" class="year-select">
+                    <option value="">Year</option>
+                    <option value=""></option>
+
+                </select><br/>
+                <input class="search-button" type="submit" value="Search"/>
+                </form>
+            </div>
+            <div class="title-wrapper-catalog">
+                <h3>Trending Animes</h3>
+            </div>
+            <div class="card-wrapper">
+                <div class="card-item" th:each="anime : ${animes}">
+                    <img th:src="${anime.attributes.posterImage.original}" alt="AnimeBanner" />
+                    <div class="card-content">
+                        <h3 th:text="${anime.attributes.canonicalTitle}"></h3>
+                        <p th:text="${anime.attributes.synopsis}">
+                        
+                        </p>
+                        <a th:href="${(#mvc.url('AC#detailsAnime').arg(0, anime.id).arg(1, 0)).build()}">Details</a>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+        </section>
+
+        <section class="catalog" id="manga">
+            <div class="content">
+            <div class="title-wrapper-catalog">
+                <h3>Trending Mangas</h3>
+            </div>
+            <div class="card-wrapper">
+                <div class="card-item" th:each="manga : ${mangas}">
+                    <img th:src="${manga.attributes.posterImage.original}" alt="MangaBanner" />
+                    <div class="card-content">
+                    <h3 th:text="${manga.attributes.canonicalTitle}"></h3>
+                    <p th:text="${manga.attributes.synopsis}">
+                        
+                    </p>
+                    <a th:href="${(#mvc.url('MC#detailsManga').arg(0, manga.id)).build()}">Details</a>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+        </section>
+    </body>
+    <footer>
+        <div class="main">
+            <div class="content footer-links">
+                <div class="footer-company">
+                    <h4>Company</h4>
+                    <h6>About</h6>
+                    <h6>Contact</h6>
+                </div>
+                <div class="footer-rental">
+                    <h4>Info</h4>
+                    <h6>Styles based in</h6>
+                    <h6>HTML/CSS</h6>
+                    <h6>Class</h6>
+                </div>
+                <div class="footer-social">
+                    <h4>Stay connected</h4>
+                    <div class="social-icons">
+                        <img th:src="@{/images/instagram.png}" alt="Instagram" />
+                        <img th:src="@{/images/facebook.png}" alt="Facebook" />
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact US</h4>
+                    <h6>+55 XX X XXXX-XXXX</h6>
+                    <h6>contact@fireotaku.com</h6>
+                    <h6>Street Name, Porto Alegre - RS</h6>
+                </div>
+            </div>
+        </div>
+        <div class="last">FireOtaku - V1.0 - 2022</div>
+    </footer>
+</html>
