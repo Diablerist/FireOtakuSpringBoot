@@ -27,10 +27,13 @@
 
 ## Execução
 
-Para fazer a execução do aplicativo, basta acessar o link:
+A execução do aplicativo é feita através do spring-boot.
 
-<https://fire-otaku.herokuapp.com>
+No console de uma IDE, insira o comando:
 
+`mvn spring-boot:run`
+
+Em seguida, abra o navegador na porta: localhost:8080
 
 ## Ferramentas
 
