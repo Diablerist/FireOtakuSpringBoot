@@ -74,7 +74,7 @@
             <center>
                 <div class="card-wrapper">
                         <div class="card-item" th:each="episode : ${episodes}">
-                            <img th:src="${episode.attributes.thumbnail.original}" alt="AnimeBanner" />
+                            <img th:src="${episode.attributes.thumbnail.original}" src="#" alt="AnimeBanner" />
                             <div class="card-content">
                                 <h3 th:text="${episode.attributes.number}"></h3>
                                 <p th:text="${episode.attributes.synopsis}">

@@ -10,6 +10,10 @@ import lombok.ToString;
 @Data
 @ToString
 public class Attributes{
+
+    /**
+     * Atributos gerais compartilhados por todas as entidades
+     */
     private Date createdAt;
     private Date updatedAt;
     private String slug;
@@ -38,19 +42,33 @@ public class Attributes{
     private String showType;
     private boolean nsfw;
 
+    /**
+     * Atributos específicos para mangás
+     */
     private int chapterCount;
     private int volumeCount;
     private String serialization;
     private String mangaType;
 
+    /**
+     * Atributos específicos para animes
+     */
     private Object episodeCount;
     private int episodeLength;
     private int totalLength;
     private String youtubeVideoId;
 
+    /**
+     * Atributos Específicos para episódios
+     */
     private int seasonNumber;
     private int number;
     private int relativeNumber;
     private Thumbnail thumbnail;
     private String airdate;
+
+    /**
+     * Atributo específico para categorias
+     */
+    private String title;
 }

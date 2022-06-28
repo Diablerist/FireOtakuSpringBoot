@@ -31,34 +31,31 @@
 
         <section class="catalog" id="anime">
             <div class="content">
-
-
-
             <div class="filter-card">
                 <form th:action="@{/search}">
-                    <input
-                        type="text"
-                        th:name="text"
-                        class="search-input"
-                        placeholder="Search for an anime, manga, genre, etc."
-                    />
-                    <br/>
-                    <select th:name="category" id="category" class="category-select">
-                        <option value="all">Categories</option>
-                        <option th:each="category : ${categories}" th:value="${category.attributes.title}">
-                            <span th:text="${category.attributes.title}"></span>
-                        </option>
-                    </select>
-    
-                    <select th:name="year" id="year" class="year-select">
-                        <option value="all">Year</option>
-                        <option th:each="year : ${year}" th:value="${year}">
-                            <span th:text="${year}"></span>
-                        </option>
-    
-                    </select><br/>
-                    <input class="search-button" type="submit" value="Search"/>
-                    </form>
+                <input
+                    type="text"
+                    th:name="text"
+                    class="search-input"
+                    placeholder="Search for an anime, manga, genre, etc."
+                />
+                <br/>
+                <select th:name="category" id="category" class="category-select">
+                    <option value="all">Categories</option>
+                    <option th:each="category : ${categories}" th:value="${category.attributes.title}">
+                        <span th:text="${category.attributes.title}"></span>
+                    </option>
+                </select>
+
+                <select th:name="year" id="year" class="year-select">
+                    <option value="all">Year</option>
+                    <option th:each="year : ${year}" th:value="${year}">
+                        <span th:text="${year}"></span>
+                    </option>
+
+                </select><br/>
+                <input class="search-button" type="submit" value="Search"/>
+                </form>
             </div>
 
 
@@ -67,7 +64,7 @@
                 <h3>Trending Animes</h3>
             </div>
             <div class="card-wrapper">
-                <div class="card-item" th:each="anime : ${animes}">
+                <div class="card-item" th:each="anime : ${animeList}">
                     <img th:src="${anime.attributes.posterImage.original}" alt="AnimeBanner" />
                     <div class="card-content">
                         <h3 th:text="${anime.attributes.canonicalTitle}"></h3>
@@ -88,7 +85,7 @@
                 <h3>Trending Mangas</h3>
             </div>
             <div class="card-wrapper">
-                <div class="card-item" th:each="manga : ${mangas}">
+                <div class="card-item" th:each="manga : ${mangaList}">
                     <img th:src="${manga.attributes.posterImage.original}" alt="MangaBanner" />
                     <div class="card-content">
                     <h3 th:text="${manga.attributes.canonicalTitle}"></h3>
