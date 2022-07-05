@@ -10,23 +10,15 @@
     </head>
 
     <body>
-        <header class="header-index">
+        <header class="header-details">
             <div class="content">
                 <nav>
                     <p class="brand"><a th:href="${(#mvc.url('IC#trending')).build()}">Fire<strong>Otaku</strong></a></p>
                     <ul>
                     <li><a href="#anime">Anime</a></li>
                     <li><a href="#manga">Manga</a></li>
-                    <li><a th:href="${(#mvc.url('MVC#mostVisited')).build()}">Most viewed</a></li>
                     </ul>
                 </nav>
-                <div class="header-block" th:each="topanime : ${topanime}">
-                    <div class="text">
-                        <h2 th:text="${topanime.attributes.canonicalTitle}"></h2>
-                        <p th:text="${topanime.attributes.synopsis}"></p>
-                    </div>
-                    <img th:src="${topanime.attributes.posterImage.original}" alt="Anime" />
-                </div>
             </div>
         </header>
 
@@ -65,7 +57,7 @@
 
 
             <div class="title-wrapper-catalog">
-                <h3>Trending Animes</h3>
+                <h3>Most Viewed Animes</h3>
             </div>
             <div class="card-wrapper">
                 <div class="card-item" th:each="anime : ${animes}">
@@ -78,7 +70,6 @@
                         <a th:href="${(#mvc.url('AC#detailsAnime').arg(0, anime.id).arg(1, 0)).build()}">Details</a>
                     </div>
                 </div>
-                
             </div>
             </div>
         </section>
@@ -86,7 +77,7 @@
         <section class="catalog" id="manga">
             <div class="content">
             <div class="title-wrapper-catalog">
-                <h3>Trending Mangas</h3>
+                <h3>Most Viewed Mangas</h3>
             </div>
             <div class="card-wrapper">
                 <div class="card-item" th:each="manga : ${mangas}">

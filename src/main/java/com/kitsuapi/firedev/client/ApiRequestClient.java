@@ -20,7 +20,7 @@ public class ApiRequestClient {
     private static WebClient client;
 
     /**
-     * Gera instancia do WebClient
+     * Gera instancia do WebClient.
      * @param builder
      */
     public ApiRequestClient(WebClient.Builder builder) {
@@ -28,20 +28,20 @@ public class ApiRequestClient {
     }
 
     /**
-     * Consulta API buscando um anime específico de acordo com ID
-     * @param id Recebe o ID referente ao anime desejado
-     * @return Retorna informações do anime buscado
+     * Consulta API buscando um anime específico de acordo com ID.
+     * @param id Recebe o ID referente ao anime desejado.
+     * @return Retorna informações do anime buscado.
      */
-    public Mono<Anime> findAnimeById(String id) {
+    public static Mono<Anime> findAnimeById(String id) {
         return client.get().uri("/anime/" + id)
         .header("Accept", "application/vnd.api+json")
         .retrieve().bodyToMono(Anime.class);
     }
 
     /**
-     * Consulta API buscando um manga específico de acordo com o ID
-     * @param id Recebe o ID referente ao manga desejado
-     * @return Retorna informações do mangá buscado
+     * Consulta API buscando um manga específico de acordo com o ID.
+     * @param id Recebe o ID referente ao manga desejado.
+     * @return Retorna informações do mangá buscado.
      */
     public static Mono<Manga> findMangaById(String id) {
         return client.get().uri("/manga/" + id)
@@ -50,9 +50,9 @@ public class ApiRequestClient {
     }
 
     /**
-     * Consulta API buscando um episódio específico de acordo com o ID
-     * @param id Recebe o ID referente ao episódio desejado
-     * @return Retorna informações do episódio
+     * Consulta API buscando um episódio específico de acordo com o ID.
+     * @param id Recebe o ID referente ao episódio desejado.
+     * @return Retorna informações do episódio.
      */
     public static Mono<Episode> findEpisodeById(String id) {
         return client.get().uri("/episodes/" + id)
@@ -61,12 +61,12 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca todos os episódios referentes ao ID do anime enviado
-     * @param id Recebe ID do anime
-     * @param page Recebe o numero referente a paginação
-     * @return Retorna todos os episódios ligados ao anime buscado
+     * Busca todos os episódios referentes ao ID do anime enviado.
+     * @param id Recebe ID do anime.
+     * @param page Recebe o numero referente a paginação.
+     * @return Retorna todos os episódios ligados ao anime buscado.
      */
-    public Mono<EpisodeList> findEpisodesByAnime(String id, String page) {
+    public static Mono<EpisodeList> findEpisodesByAnime(String id, String page) {
         return client.get().uri("/anime/" + id + "/episodes?page[limit]=18&page[offset]=" + page)
             .header("Accept", "application/vnd.api+json")
             .retrieve()
@@ -74,10 +74,10 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca os mangás referentes aos filtros inseridos
-     * @param text Recebe o filtro de texto que é digitado pelo usuário
-     * @param category Recebe o filtro de categoria selecionado
-     * @return Retorna lista de mangás referentes aos filtros inseridos
+     * Busca os mangás referentes aos filtros inseridos.
+     * @param text Recebe o filtro de texto que é digitado pelo usuário.
+     * @param category Recebe o filtro de categoria selecionado.
+     * @return Retorna lista de mangás referentes aos filtros inseridos.
      */
     public static Mono<MangaList> searchManga(String text, String category) {
         String url = "/manga?";
@@ -95,11 +95,11 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca os animes referentes aos filtros inseridos
-     * @param text Recebe o filtro de texto que é digitado pelo usuário
-     * @param category Recebe o filtro de categoria selecionado
-     * @param year Recebe o filtro de ano de lançamento selecionado
-     * @return Retorna lista de animes referentes aos filtros inseridos
+     * Busca os animes referentes aos filtros inseridos.
+     * @param text Recebe o filtro de texto que é digitado pelo usuário.
+     * @param category Recebe o filtro de categoria selecionado.
+     * @param year Recebe o filtro de ano de lançamento selecionado.
+     * @return Retorna lista de animes referentes aos filtros inseridos.
      */
     public static Mono<AnimeList> searchAnime(String text, String category, String year) {
         String url = "/anime?";
@@ -120,8 +120,8 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca os animes mais populares
-     * @return Retorna lista de animes mais populares
+     * Busca os animes mais populares.
+     * @return Retorna lista de animes mais populares.
      */
     public static Mono<AnimeList> trendingAnime() {
         return client.get().uri("/trending/anime")
@@ -130,8 +130,8 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca os mangás mais populares
-     * @return Retorna lista de mangás mais populares
+     * Busca os mangás mais populares.
+     * @return Retorna lista de mangás mais populares.
      */
     public static Mono<MangaList> trendingManga() {
         return client.get().uri("/trending/manga")
@@ -140,8 +140,8 @@ public class ApiRequestClient {
     }
 
     /**
-     * Busca todas as categorias disponíveis
-     * @return Retorna lista de categorias em ordem alfabética
+     * Busca todas as categorias disponíveis.
+     * @return Retorna lista de categorias em ordem alfabética.
      */
     public static Mono<Categories> categories() {
         return client.get().uri("/categories?page[limit]=200&page[offset]=0&sort=title")

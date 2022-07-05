@@ -17,6 +17,7 @@
                     <ul>
                     <li><a href="#anime">Anime</a></li>
                     <li><a href="#manga">Manga</a></li>
+                    <li><a th:href="${(#mvc.url('MVC#mostVisited')).build()}">Most viewed</a></li>
                     </ul>
                 </nav>
                 <div class="header-block" th:each="topanime : ${topanime}">
