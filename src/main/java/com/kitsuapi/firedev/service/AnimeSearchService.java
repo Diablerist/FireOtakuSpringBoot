@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.kitsuapi.firedev.model.AnimeSearches;
@@ -57,7 +58,7 @@ public class AnimeSearchService {
      * Busca todos os animes no banco de dados.
      */
     public List<AnimeSearches> findAll() {
-        return animeSearchRepository.findAll();
+        return animeSearchRepository.findAll(Sort.by(Sort.Direction.DESC, "searchCount"));
     }
     
 }
