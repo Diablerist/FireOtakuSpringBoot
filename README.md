@@ -24,6 +24,8 @@
     🟢 Buscar anime ou manga com filtros (título, ano, etc);
     🟢 Obter informações de um anime ou manga;
     🟢 Obter informações de um episodio de um anime especifico.
+    🟢 Criar estrutura no banco para salvar as buscas do usuário.
+    🟢 Criar um relatório de itens mais pesquisados com base na estrutura criada.
 
 ## Execução
 
