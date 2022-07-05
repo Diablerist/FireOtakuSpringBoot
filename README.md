@@ -42,6 +42,7 @@ Em seguida, abra o navegador na porta: localhost:8080
 * Spring Boot
 * Maven
 * Visual Studio Code
+* PostgreSQL
 
 ### Extensões VSCode:
 * API Elements
